@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FUSIC-FGX - 動的レイアウト最適化 デスクトップ壁紙作成ツール</title>
+    <meta name="description" content="縦長・横長など多様な画像を隙間なく美しく配置。動的プロポーショナル・パッキング搭載のWindows向けデスクトップ壁紙作成ユーティリティ（フリーウェア）の公式ページです。">
+    <meta name="robots" content="index, follow">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --bg-dark: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-sub: #94a3b8;
+            --accent: #38bdf8;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        header {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--accent);
+            letter-spacing: 2px;
+        }
+
+        .hero {
+            max-width: 900px;
+            margin: 4rem auto;
+            text-align: center;
+            padding: 0 1rem;
+        }
+
+        .hero-icon {
+            width: 120px;
+            height: 120px;
+            object-fit: contain;
+            margin-bottom: 2rem;
+            filter: drop-shadow(0 10px 20px rgba(56, 189, 248, 0.3));
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #fff 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-sub);
+            margin-bottom: 2.5rem;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.4);
+        }
+
+        .cta-btn:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-2px);
+        }
+
+        .features {
+            max-width: 1200px;
+            margin: 6rem auto;
+            padding: 0 1rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background-color: var(--card-bg);
+            border: 1px solid #334155;
+            border-radius: 12px;
+            padding: 2rem;
+            transition: transform 0.2s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
+            color: var(--accent);
+        }
+
+        .feature-card p {
+            color: var(--text-sub);
+            font-size: 0.95rem;
+        }
+
+        /* ガイドセクション（使い方・インストール等） */
+        .guide-section {
+            max-width: 1000px;
+            margin: 6rem auto;
+            padding: 0 1rem;
+        }
+
+        .guide-section h2 {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 3rem;
+            background: linear-gradient(135deg, #fff 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .guide-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .guide-card {
+            background-color: var(--card-bg);
+            border: 1px solid #334155;
+            border-radius: 12px;
+            padding: 2rem;
+        }
+
+        .guide-card h3 {
+            font-size: 1.2rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .guide-card p, .guide-card li {
+            color: var(--text-sub);
+            font-size: 0.95rem;
+        }
+
+        .guide-card ul {
+            padding-left: 1.2rem;
+        }
+
+        .steps-container {
+            background-color: var(--card-bg);
+            border: 1px solid #334155;
+            border-radius: 12px;
+            padding: 2.5rem;
+        }
+
+        .steps-container h3 {
+            font-size: 1.4rem;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .step-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+        .step-item {
+            background-color: #0f172a;
+            border: 1px solid #334155;
+            border-radius: 8px;
+            padding: 1.2rem;
+            position: relative;
+        }
+
+        .step-num {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            font-weight: bold;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 24px;
+            font-size: 0.85rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .step-item p {
+            color: var(--text-sub);
+            font-size: 0.9rem;
+        }
+
+        .supported-formats {
+            max-width: 1000px;
+            margin: 6rem auto;
+            padding: 2rem 1rem;
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .supported-formats h2 {
+            margin-bottom: 1.5rem;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            justify-content: center;
+        }
+
+        .tag {
+            background-color: #334155;
+            color: var(--accent);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        /* ライセンス・免責事項セクション */
+        .legal-section {
+            max-width: 1000px;
+            margin: 6rem auto;
+            padding: 0 1rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .legal-card {
+            background-color: var(--card-bg);
+            border: 1px solid #334155;
+            border-radius: 12px;
+            padding: 2rem;
+        }
+
+        .legal-card h3 {
+            font-size: 1.2rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .legal-card p {
+            color: var(--text-sub);
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem;
+            color: var(--text-sub);
+            border-top: 1px solid #1e293b;
+            margin-top: 4rem;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .hero p { font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-area">
+            <img src="FUSIC-FGX-ICON.png" alt="FUSIC-FGX png" class="logo-icon">
+            <div class="logo">FUSIC-FGX</div>
+        </div>
+        <a href="https://github.com/roseGarden2500/FUSIC-FXG_LP/releases/download/v1.0.0/FUSIC-FGX_v1.0.0.zip" class="cta-btn" style="padding: 0.5rem 1.2rem; font-size: 0.9rem;">ダウンロード</a>
+    </header>
+
+    <section class="hero">
+        <img src="FUSIC-FGX-ICON.png" alt="FUSIC-FGX png" class="hero-icon">
+        <h1>たくさんのお気に入りを、<br>隙間なく美しく一枚の壁紙に。</h1>
+        <p>縦長・横長の比率がバラバラな写真も、動的プロポーショナル・パッキングで自動整列。<br>あなただけのオリジナルデスクトップ壁紙をサクッと作成できます。</p>
+        <a href="https://github.com/roseGarden2500/FUSIC-FXG_LP/releases/download/v1.0.0/FUSIC-FGX_v1.0.0.zip" class="cta-btn">最新版をダウンロード（無料）</a>
+    </section>
+
+    <section class="features">
+        <div class="feature-card">
+            <div class="feature-icon">🧩</div>
+            <h3>動的プロポーショナル・パッキング</h3>
+            <p>異なるアスペクト比の画像が混ざっていても、バランスを自動計算して隙間なく美しく敷き詰めるレイアウトエンジンを搭載。</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🖱️</div>
+            <h3>直感的なドラッグ＆ドロップ</h3>
+            <p>複数画像をまとめて一発追加。さらに配置済みの画像の上に直接ドラッグすれば、そのセルだけを素早く入れ替えられます。</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🔍</div>
+            <h3>フレーミング＆ズーム調整</h3>
+            <p>各画像の上でマウスホイールによる拡大・縮小、ドラッグによるトリミング位置の微調整が自由自在に行えます。</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">⚡</div>
+            <h3>便利な右クリックメニュー</h3>
+            <p>画像の上で右クリックするだけで、「フレーミングをリセット」したり「この画像を削除」して自動再レイアウトが可能。</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🖼️</div>
+            <h3>選べる解像度と高画質PNG出力</h3>
+            <p>Full HDや4Kなど、お使いのディスプレイに合わせた解像度を選択し、高画質なPNG形式の壁紙としてそのまま出力できます。</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🛡️</div>
+            <h3>ローカル完結でプライバシー安心</h3>
+            <p>外部サーバーへの通信を一切行わない完全ローカル処理。お気に入りのプライベートな写真も安心して処理できます。</p>
+        </div>
+    </section>
+
+    <!-- インストール・起動・操作方法ガイド -->
+    <section class="guide-section">
+        <h2>ご利用の流れ</h2>
+        
+        <div class="guide-grid">
+            <div class="guide-card">
+                <h3>📦 インストール方法</h3>
+                <p>ダウンロードしたzipファイルを解凍するだけで、すぐにご利用いただけます（インストーラー不要のポータブル仕様です）。</p>
+            </div>
+            <div class="guide-card">
+                <h3>🚀 起動方法</h3>
+                <p>解凍したフォルダ内にある実行ファイル <strong>`FUSIC-FGX.exe`</strong> をダブルクリックして起動してください。デスクトップ等にショートカットを作成すると便利です。</p>
+            </div>
+        </div>
+
+        <div class="steps-container">
+            <h3>📝 基本的な操作方法</h3>
+            <ul class="step-list">
+                <li class="step-item">
+                    <span class="step-num">1</span>
+                    <p>上のメニューで壁紙の解像度を選択する</p>
+                </li>
+                <li class="step-item">
+                    <span class="step-num">2</span>
+                    <p>画像ファイル（複数可）を左の配置画面にドラッグする</p>
+                </li>
+                <li class="step-item">
+                    <span class="step-num">3</span>
+                    <p>各画像の上でホイール拡大やドラッグで位置を調整する</p>
+                </li>
+                <li class="step-item">
+                    <span class="step-num">4</span>
+                    <p>「画像を再配置（最適化）」ボタンを押して整える</p>
+                </li>
+                <li class="step-item">
+                    <span class="step-num">5</span>
+                    <p>「画像を保存」ボタンを押して壁紙を出力する</p>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="supported-formats">
+        <h2>対応フォーマット・出力</h2>
+        <div class="tags">
+            <span class="tag">PNG Image (.png)</span>
+            <span class="tag">JPEG / WEBP</span>
+            <span class="tag">Full HD (16:9)</span>
+            <span class="tag">4K Ultra HD</span>
+            <span class="tag">マルチアスペクト対応</span>
+        </div>
+    </section>
+
+    <!-- ライセンス・免責事項 -->
+    <section class="legal-section">
+        <div class="legal-card">
+            <h3>利用ライセンス</h3>
+            <p>本ソフトウェア（FUSIC-FGX）はフリーウェアです。個人利用・商用利用を問わず、どなたでも無料でお使いいただけます。</p>
+        </div>
+        <div class="legal-card">
+            <h3>免責事項</h3>
+            <p>本ソフトウェアの利用によって生じたいかなる損害・トラブルについても、作者は一切の責任を負いかねます。ご利用にあたっては、ご自身の責任において行ってください。</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Feature GateX. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
