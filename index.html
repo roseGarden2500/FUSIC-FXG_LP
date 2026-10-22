@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FUSIC-FGX - 動的レイアウト最適化 デスクトップ壁紙作成ツール</title>
     <meta name="google-site-verification" content="N3KEqftvbtp53VRF_qRVSJeftfHlPomNf_ee839ewpo" />
-    <meta name="description" content="縦長・横長など多様な画像を隙間なく美しく配置。動的プロポーショナル・パッキング搭載のWindows向けデスクトップ壁紙作成ユーティリティ（フリーウェア）の公式ページです。">
+    <meta name="description" content="縦長・横長など多様な画像を隙間なく美しく配置。動的プロポーショナル・パッキングとスマートな位置入れ替えを搭載したWindows向けデスクトップ壁紙作成ユーティリティ（フリーウェア）の公式ページです。">
     <meta name="robots" content="index, follow">
     <style>
         :root {
@@ -107,6 +107,61 @@
             transform: translateY(-2px);
         }
 
+        /* ギャラリーセクション */
+        .gallery-section {
+            max-width: 1200px;
+            margin: 6rem auto;
+            padding: 0 1rem;
+            text-align: center;
+        }
+
+        .gallery-section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #fff 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .gallery-section p.gallery-sub {
+            color: var(--text-sub);
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .gallery-card {
+            background-color: var(--card-bg);
+            border: 1px solid #334155;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .gallery-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .gallery-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-bottom: 1px solid #334155;
+        }
+
+        .gallery-card .caption {
+            padding: 1.2rem;
+            font-size: 1rem;
+            font-weight: bold;
+            color: var(--text-main);
+        }
+
         .features {
             max-width: 1200px;
             margin: 6rem auto;
@@ -144,7 +199,7 @@
             font-size: 0.95rem;
         }
 
-        /* ガイドセクション（使い方・インストール等） */
+        /* ガイドセクション */
         .guide-section {
             max-width: 1000px;
             margin: 6rem auto;
@@ -186,10 +241,6 @@
         .guide-card p, .guide-card li {
             color: var(--text-sub);
             font-size: 0.95rem;
-        }
-
-        .guide-card ul {
-            padding-left: 1.2rem;
         }
 
         .steps-container {
@@ -317,17 +368,37 @@
 
     <header>
         <div class="logo-area">
-            <img src="FUSIC-FGX-ICON.png" alt="FUSIC-FGX png" class="logo-icon">
+            <img src="FUSIC-FGX-ICON.png" alt="FUSIC-FGX icon" class="logo-icon">
             <div class="logo">FUSIC-FGX</div>
         </div>
-        <a href="https://github.com/roseGarden2500/FUSIC-FXG_LP/releases/download/v1.0.0/FUSIC-FGX_v1.0.0.zip" class="cta-btn" style="padding: 0.5rem 1.2rem; font-size: 0.9rem;">ダウンロード</a>
+        <a href="https://github.com/roseGarden2500/FUSIC-FXG_LP/releases/download/v2.0.0/FUSIC-FGX_v2.0.0.zip" class="cta-btn" style="padding: 0.5rem 1.2rem; font-size: 0.9rem;">ダウンロード</a>
     </header>
 
     <section class="hero">
-        <img src="FUSIC-FGX-ICON.png" alt="FUSIC-FGX png" class="hero-icon">
+        <img src="FUSIC-FGX-ICON.png" alt="FUSIC-FGX icon" class="hero-icon">
         <h1>たくさんのお気に入りを、<br>隙間なく美しく一枚の壁紙に。</h1>
         <p>縦長・横長の比率がバラバラな写真も、動的プロポーショナル・パッキングで自動整列。<br>あなただけのオリジナルデスクトップ壁紙をサクッと作成できます。</p>
-        <a href="https://github.com/roseGarden2500/FUSIC-FXG_LP/releases/download/v1.0.0/FUSIC-FGX_v1.0.0.zip" class="cta-btn">最新版をダウンロード（無料）</a>
+        <a href="https://github.com/roseGarden2500/FUSIC-FXG_LP/releases/download/v2.0.0/FUSIC-FGX_v2.0.0.zip" class="cta-btn">最新版をダウンロード（無料）</a>
+    </section>
+
+    <!-- 壁紙サンプルギャラリーセクション -->
+    <section class="gallery-section">
+        <h2>壁紙サンプルギャラリー</h2>
+        <p class="gallery-sub">「FUSIC-FGX」を使って実際に作成された高解像度デスクトップ壁紙の作例です</p>
+        <div class="gallery-grid">
+            <div class="gallery-card">
+                <img src="sample_autumn_leaves.png" alt="秋の紅葉風景壁紙サンプル">
+                <div class="caption">秋の紅葉風景（マルチアスペクト・ミックス）</div>
+            </div>
+            <div class="gallery-card">
+                <img src="sample_Illustrations.png" alt="ポートレート・イラスト壁紙サンプル">
+                <div class="caption">キャラクターイラストコレクション</div>
+            </div>
+            <div class="gallery-card">
+                <img src="sample_roses.png" alt="色鮮やかなバラの花壁紙サンプル">
+                <div class="caption">色鮮やかなバラの花のクローズアップ</div>
+            </div>
+        </div>
     </section>
 
     <section class="features">
@@ -337,19 +408,19 @@
             <p>異なるアスペクト比の画像が混ざっていても、バランスを自動計算して隙間なく美しく敷き詰めるレイアウトエンジンを搭載。</p>
         </div>
         <div class="feature-card">
+            <div class="feature-icon">🔄</div>
+            <h3>配置画像のスマート位置入れ替え</h3>
+            <p>右クリックメニューの「別の場所の画像と入れ替える」＆「選択中の画像と入れ替える」で、配置済み画像同士の位置をスムーズにスワップ。</p>
+        </div>
+        <div class="feature-card">
             <div class="feature-icon">🖱️</div>
             <h3>直感的なドラッグ＆ドロップ</h3>
-            <p>複数画像をまとめて一発追加。さらに配置済みの画像の上に直接ドラッグすれば、そのセルだけを素早く入れ替えられます。</p>
+            <p>複数画像をまとめて一発追加。さらに配置済みの画像の上に直接外部ファイルをドラッグすれば、そのセルだけを素早く上書き差し替え。</p>
         </div>
         <div class="feature-card">
             <div class="feature-icon">🔍</div>
             <h3>フレーミング＆ズーム調整</h3>
             <p>各画像の上でマウスホイールによる拡大・縮小、ドラッグによるトリミング位置の微調整が自由自在に行えます。</p>
-        </div>
-        <div class="feature-card">
-            <div class="feature-icon">⚡</div>
-            <h3>便利な右クリックメニュー</h3>
-            <p>画像の上で右クリックするだけで、「フレーミングをリセット」したり「この画像を削除」して自動再レイアウトが可能。</p>
         </div>
         <div class="feature-card">
             <div class="feature-icon">🖼️</div>
@@ -395,11 +466,11 @@
                 </li>
                 <li class="step-item">
                     <span class="step-num">4</span>
-                    <p>「画像を再配置（最適化）」ボタンを押して整える</p>
+                    <p>右クリックメニューで「別の場所の画像と入れ替える」を使い、自由な配置にブラッシュアップする</p>
                 </li>
                 <li class="step-item">
                     <span class="step-num">5</span>
-                    <p>「画像を保存」ボタンを押して壁紙を出力する</p>
+                    <p>「画像を保存」ボタンを押して完成した壁紙を出力する</p>
                 </li>
             </ul>
         </div>
